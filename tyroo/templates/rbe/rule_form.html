@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+
+{% extends "rbe/base.html" %}
+
+{% block body_block %}
+
+<h1> Add new rule </h1>
+<div class="container">
+    <form method="POST">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <input type="submit" class="btn btn-primary" value="submit">
+    </form>
+
+</div>
+
+{% endblock %}

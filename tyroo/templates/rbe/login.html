@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+{% extends "rbe/base.html" %}
+{% block body_block %}
+<br><br><br>
+<div class="jumbotron">
+    <h1>LOGIN</h1>
+    <br><br>
+    <form action="{% url 'auth' %}", method="post">
+        {% csrf_token%}
+        <label for="username"> Username : </label>
+        <input type="username" name="username" placeholder="username">
+
+        <label for="passsword"> Password : </label>
+        <input type="password" name="password">
+
+        <input type="submit" name="" value="login">
+
+    </form>
+</div>
+        
+
+{% endblock %}

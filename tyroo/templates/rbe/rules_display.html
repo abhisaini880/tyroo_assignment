@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+
+{% extends "rbe/base.html" %}
+
+{% block body_block %}
+
+<h1> Campaign Rules </h1>
+<br>
+<div class="container">
+    <form action="rule_form.html">
+        <input type="submit" class="btn btn-primary" value="Add New Rule">
+    </form>
+
+</div>
+<br>
+<h2> Existing Rules are : </h2>
+<div class="jumbotron">
+    {% if rule_record %}
+        <table border="1">
+            <thead>
+                <th>Rule Name</th>
+                <th>Campaign Name</th>
+                <th>Rule Schedule</th>
+                <th>Rule Status</th>
+                <th>Edit Rule</th>
+            </thead>
+            {% for rule in rule_record %}
+                <tr>
+                    <td>{{ rule.rule_name }}</td>
+                    <td>{{ rule.campaign}}</td>
+                    <td>{{ rule.schedule_time}}</td>
+                    {% if rule.status == True %}
+                        <td>Active</td>
+                    {% else %}
+                        <td>Deactive</td>
+                    {% endif %}
+                    <td><a href="{% url 'rule_based_engine:rule_update' rule.id %}"><button type="button" class="btn btn-info">Edit</button></a></td>
+                </tr>
+
+            {% endfor %}
+        </table>
+    {% else %}
+        <p> No Record For Rules Found</p>
+    {% endif %}
+</div>
+
+{% endblock %}
